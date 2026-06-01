@@ -145,8 +145,8 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 clamp(1.2rem, 5vw, 2rem
 }
 .hero-photo img {
     display: block;
-    width: clamp(200px, 26vw, 320px);
-    height: clamp(200px, 26vw, 320px);
+    width: clamp(150px, 18vw, 230px);
+    height: clamp(150px, 18vw, 230px);
     object-fit: cover;
     object-position: center top;
     border-radius: 50%;
