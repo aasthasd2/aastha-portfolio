@@ -127,11 +127,34 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 clamp(1.2rem, 5vw, 2rem
 .hero {
     min-height: 88vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(1.5rem, 5vw, 4rem);
     max-width: var(--max);
     margin: 0 auto;
     padding: 0 clamp(1.2rem, 5vw, 2rem);
+}
+.hero-text { flex: 1 1 0; min-width: 0; }
+.hero-photo {
+    flex: 0 0 auto;
+    padding: 5px;
+    background: var(--grad);
+    border-radius: 50%;
+    box-shadow: 0 20px 60px -15px var(--c2);
+    animation: float-photo 6s ease-in-out infinite;
+}
+.hero-photo img {
+    display: block;
+    width: clamp(200px, 26vw, 320px);
+    height: clamp(200px, 26vw, 320px);
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+    border: 5px solid var(--bg);
+}
+@keyframes float-photo {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
 }
 .hero-eyebrow {
     font-size: 1.05rem;
@@ -395,10 +418,17 @@ main { max-width: var(--max); margin: 0 auto; padding: 0 clamp(1.2rem, 5vw, 2rem
     .stats { grid-template-columns: repeat(2, 1fr); }
     .job-date { margin-left: 0; }
     .edu-card { flex-direction: column; text-align: center; }
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        justify-content: center;
+        padding-top: 2rem;
+    }
+    .hero-actions, .hero-meta { justify-content: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .blob { animation: none; }
+    .blob, .hero-photo { animation: none; }
     .reveal { transition: none; opacity: 1; transform: none; }
     html { scroll-behavior: auto; }
 }
