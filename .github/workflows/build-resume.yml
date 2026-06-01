@@ -1,0 +1,32 @@
+name: Build Resume PDF
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - Aastha_Ojha_Resume.tex
+      - .github/workflows/build-resume.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-resume:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build resume PDF
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: Aastha_Ojha_Resume.tex
+
+      - name: Commit generated PDF
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: auto-build resume PDF [skip ci]"
+          file_pattern: Aastha_Ojha_Resume.pdf
